@@ -2,20 +2,24 @@
 ## Intro
 At [Interra](http://interra.io) we are interested in open data, and especially in open standards. We are interested in building pipelines for data and we want to build tools that make that data accessible and useful. Open standards allow us to do this.
 
-We decided to test our ideas using Phialdelphia's [Open311 portal](https://www.opendataphilly.org/dataset/311-service-and-information-requests) (Clieck here for a [demo](http://311-demo.interra.io/?service_name=Graffiti%20Removal). This series of blog posts explores some of the techniques we used.
+We decided to test our ideas using Phialdelphia's [Open311 portal](https://www.opendataphilly.org/dataset/311-service-and-information-requests). The Open311 standard is being adopted by cities and governments across the globe and offers a good example of how we can use standards to build tools for a wide audience.
+
+Click here for a [demo](http://311-demo.interra.io/?service_name=Graffiti%20Removal).
+
+This series of blog posts explores some of the techniques we used.
 
 ## Part 1
 ### Neighborhoods in GeoJSON and postGIS
-The [Open311 GeoReport v2 spec](http://wiki.open311.org/GeoReport_v2/) requires a location_paramater which contains geospatial information. We wanted to classify this information by neighborhood in order to do analysis of the types of requests and services which were being provided to different parts of the city. In order to do this we needed to associate the requests with neighborhood boundaries, and so I started looking around for the data that I needed. I found some interesting resources along the way:
+The [Open311 GeoReport v2 spec](http://wiki.open311.org/GeoReport_v2/) requires a `location_paramater` which specifies geospatial information. We wanted to classify this information by neighborhood in order to do analysis of the types of services that are being requested and provided to different parts of the city. In order to do this we needed to associate the requests with neighborhood boundaries, and so I started looking around for the data that I needed. I found some interesting resources along the way:
 
 * https://www.opendataphilly.org/ - The official open data repository for the city.
 * https://github.com/blackmad/neighborhoods - A giant repository of open source geojson files
 
 For this tutorial I'll use the following file^1: https://github.com/blackmad/neighborhoods/blob/master/philadelphia.geojson 
 
-In our demo we use the geojson as is with the [leaflet-react module](https://github.com/PaulLeCam/react-leaflet).
+On the front end of our demo, this geojson data will be rendered using the [leaflet-react module](https://github.com/PaulLeCam/react-leaflet).
 
-We also needed to get the geojson into a database so that we can perform queries at the neighborhood level, which is the subject of this post.
+We also needed to get the geojson into a database so that we can perform geospatial queries.
 
 Here's how:
 
