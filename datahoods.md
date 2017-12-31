@@ -2,9 +2,7 @@
 ## Part 1
 ### Neighborhoods in GeoJSON and postGIS
 
-If you live in Philly you know that you can't mention the name of a neighborhood in polite conversation without starting an argument about what the neighborhood is really called, where it starts and ends, who calls it what and why. The is a fascinating topic, and a conversation that I welcome, and would love to explore in greater depth in another blog post. For the moment, we will accept the neighborhood definitions as provided, with a grain of salt.
-
-There is a lot of cool geojson out there. I wanted to explore 311 requests and other open data in the context of Philadelphia's neighborhoods so I started looking around for the data that I needed and found some interesting resources along the way:
+There is a lot of cool geojson out there. I wanted to explore 311 requests and other open data in the context of Philadelphia's neighborhoods^1 so I started looking around for the data that I needed and found some interesting resources along the way:
 
 * https://www.opendataphilly.org/ - The official open data repository for the city.
 * https://github.com/blackmad/neighborhoods - A giant repository of open source geojson files
@@ -124,8 +122,13 @@ datahoods=# SELECT listname FROM neighborhoods WHERE ST_Contains(ST_SetSRID(the_
  University City
 (1 row)
 ```
-OK. In most cases the claim of "University City" can be contested as expansionist, but in this case I'll take it.
+See footnote^2
 
 Note that we have to set the SRIDs of these geometry objects before we can compare them. SRIDs refer to the spatial reference system, and we need to make sure we are comparing apples to apples. (Much more on this [here](https://en.wikipedia.org/wiki/Spatial_reference_system).
 
 That's all for now. In the next post we'll figure out how to add appropriate metadata to our 311 records so that we can use an ORM to do queries based on the geospatial data in the records.
+
+...
+[1] If you live in Philly you know that you can't mention the name of a neighborhood in polite conversation without starting an argument about what the neighborhood is really called, where it starts and ends, who calls it what and why. The is a fascinating topic, and a conversation that I welcome, and would love to explore in greater depth in another blog post. For the moment, we will accept the neighborhood boundaries as defined in the geojson -- with a grain of salt.
+
+[2] Penn has a long history of overreaching in its naming of "University City" but, in this case, I will accept the definition provided by my query.
