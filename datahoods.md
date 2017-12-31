@@ -1,17 +1,21 @@
-# Datahoods, exploring neighborhood-level data 
+# Exploring Open311 Data
+## Intro
+At [Interra](http://interra.io) we are interested in open data, and especially in open standards. Open standards allow us to build tools that are useful and reusable. We are interested in building pipelines for data and we want to build tools that make data accessible and useful. Open standards allow us to do this. We decided to test our ideas using Phialdelphia's [Open311 portal](https://www.opendataphilly.org/dataset/311-service-and-information-requests) (Clieck here for a [demo](311-demo.interra.io/?service_name=Graffiti Removal). This series of blog posts explores some of the techniques we used.
+
 ## Part 1
 ### Neighborhoods in GeoJSON and postGIS
-
-There is a lot of cool geojson out there. I wanted to explore 311 requests and other open data in the context of Philadelphia's neighborhoods^1 so I started looking around for the data that I needed and found some interesting resources along the way:
+The [Open311 GeoReport v2 spec](http://wiki.open311.org/GeoReport_v2/) requires a location_paramater which contains geospatial information. We wanted to classify this information by neighborhood in order to do analysis of the types of requests and services which were being provided to different parts of the city. In order to do this we needed to associate the requests with neighborhood boundaries, and so I started looking around for the data that I needed. I found some interesting resources along the way:
 
 * https://www.opendataphilly.org/ - The official open data repository for the city.
 * https://github.com/blackmad/neighborhoods - A giant repository of open source geojson files
 
-We'll use the following file for our tutorial: https://github.com/blackmad/neighborhoods/blob/master/philadelphia.geojson 
+For this tutorial I'll use the following file^1: https://github.com/blackmad/neighborhoods/blob/master/philadelphia.geojson 
 
-We can use the geoJSON as-is in a front-end tool like [Leaflet](http://leafletjs.com/), which is what we did for [our demo](http://311-demo.interra.io/?service_name=Graffiti%20Removal).
+In our demo we use the geojson as is with the [leaflet-react module](https://github.com/PaulLeCam/react-leaflet).
 
-We also want to get the geojson into a database so that we can perform queries at the neighborhood level, which is the subject of this post.
+We also needed to get the geojson into a database so that we can perform queries at the neighborhood level, which is the subject of this post.
+
+Here's how:
 
 We'll assume that you have postgres running in debian or a similar environment. We also use a node-js tool [postgres-import-json](https://github.com/dzuluaga/postgres-import-json) to import the geoJSON to postgres.
 
