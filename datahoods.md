@@ -2,7 +2,7 @@
 ## Intro
 At [Interra](http://interra.io) we are interested in open data, and especially in open standards. We are interested in building pipelines for data and we want to build tools that make that data accessible and useful. Open standards allow us to do this.
 
-We decided to test our ideas using Phialdelphia's [Open311 portal](https://www.opendataphilly.org/dataset/311-service-and-information-requests) (Clieck here for a [demo](311-demo.interra.io/?service_name=Graffiti Removal). This series of blog posts explores some of the techniques we used.
+We decided to test our ideas using Phialdelphia's [Open311 portal](https://www.opendataphilly.org/dataset/311-service-and-information-requests) (Clieck here for a [demo](http://311-demo.interra.io/?service_name=Graffiti%20Removal). This series of blog posts explores some of the techniques we used.
 
 ## Part 1
 ### Neighborhoods in GeoJSON and postGIS
