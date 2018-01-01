@@ -10,6 +10,7 @@ This series of blog posts explores some of the techniques we used.
 
 ## Part 1
 ### Neighborhoods in GeoJSON and postGIS
+![philly 311 neighborhood map and chart](http://www.interra.io/img/screen-viz3.png)
 The [Open311 GeoReport v2 spec](http://wiki.open311.org/GeoReport_v2/) requires a `location_paramater` which specifies geospatial information. We wanted to classify this information by neighborhood in order to do analysis of the types of services that are being requested and provided to different parts of the city. In order to do this we needed to associate the requests with neighborhood boundaries, and so I started looking around for the data that I needed. I found some interesting resources along the way:
 
 * https://www.opendataphilly.org/ - The official open data repository for the city.
@@ -141,4 +142,4 @@ That's all for now. In the next post we'll figure out how to add appropriate met
 ...
 [1] If you live in Philly you know that you can't mention the name of a neighborhood in polite conversation without starting an argument about what the neighborhood is really called, where it starts and ends, who calls it what and why. The is a fascinating topic, and a conversation that I welcome, and would love to explore in greater depth in another blog post. For the moment, we will accept the neighborhood boundaries as defined in the geojson -- with a grain of salt.
 
-[2] Penn has a long history of overreaching in its naming of "University City" but, in this case, I will accept the definition provided by my query.
+[2] Penn has a long history of overreaching in its naming of "University City" (http://america.aljazeera.com/articles/2014/12/31/philadelphia-universitiesexpansiondrovewidergentrificationtensio.html) but, in this case, I will accept the definition provided by my query.
